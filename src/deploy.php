@@ -18,8 +18,12 @@ $toDeployList = array_map(function ($val) {
 
 
 // Get configuration JSON
-$config_json = @file_get_contents($reposConfigFileName, true) or die('Missing configuration file.');
+$config_json = @file_get_contents($reposConfigFileName) or die('Missing configuration file.');
 $projectsJSON = json_decode($config_json);
+
+if(!$projectsJSON){
+    die('Configuration file is empty or is not valid.');
+}
 
 // Make an array with projectnaem_reponame as key with the repo configuration inside
 $reposList = [];
@@ -52,3 +56,5 @@ foreach ($toDeployList as $toDeployItem) {
 
     repoUpdate($toDeployItem, $repoSettings);
 }
+
+
