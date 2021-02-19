@@ -43,7 +43,7 @@ function saveToLog($toDeployItem, $repoSettings, $output, $retval)
 function isValidHMAC($headers, $body_raw, $secret)
 {
     //Get header hash HMAC from bitbucket
-    $headers_hash_hmac = explode('=', $headers->HTTP_X_HUB_SIGNATURE);
+    $headers_hash_hmac = explode('=', $headers['HTTP_X_HUB_SIGNATURE']);
 
     // Calculate body hash HMAC
     $body_hash_hmac = hash_hmac($headers_hash_hmac[0], $body_raw, $secret);
@@ -69,11 +69,13 @@ function repoUpdate($toDeployItem, $repoSettings)
     $retval = null;
     $toDeployFolder = __DIR__ . '/' . $toDeployFolderName;
 
-    chdir($repoSettings['path'],);
+    chdir($repoSettings['path']);
     exec($repoSettings['command'], $output, $retval);
 
     //Remove associated to_deploy file
     unlink($toDeployFolder ."/". $toDeployItem . ".txt");
 
     saveToLog($toDeployItem, $repoSettings, $output, $retval);
+
+    echo "Repo deployed."
 }

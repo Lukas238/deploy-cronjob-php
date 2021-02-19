@@ -7,7 +7,7 @@ $toDeployFolder = __DIR__ . '/' . $toDeployFolderName;
 
 $toDeployList = glob($toDeployFolder . '/*.txt');
 if (count($toDeployList) <= 0) {
-    die(); // Nothing to deploy
+    die('Nothing to do.'); // Nothing to deploy
 }
 
 // Remove the file extension
@@ -52,7 +52,3 @@ foreach ($toDeployList as $toDeployItem) {
 
     repoUpdate($toDeployItem, $repoSettings);
 }
-
-
-// ...run deploy command
-// ... delete repo deploy file

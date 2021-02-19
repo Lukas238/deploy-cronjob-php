@@ -8,17 +8,17 @@ $toDeployFolder = __DIR__ . '/../' . $toDeployFolderName;
 ************************/
 
 //Get webhook body json
-$body = trim(file_get_contents('php://input'));
+$body_raw = trim(file_get_contents('php://input'));
 // $body_raw = trim(file_get_contents('../post_body.json'));
 
-//Get webhook headers
-$headers = json_encode($_SERVER);
-// $headers = json_decode(file_get_contents('../post_headers.json'));
+if(!$body_raw){
+    die('Nothing to do.');
+}
 
 // Check if HMAC match
-if (!isValidHMAC($headers, $body_raw, $secret)) {
+if (!isValidHMAC($_SERVER, $body_raw, $secret)) {
     echo "error";
-    return;
+    die('Invalid HMAC hash.');
 }
 
 $body = json_decode($body_raw); // Get webhook data
@@ -40,3 +40,5 @@ file_put_contents($toDeployFolder . '/' . $repoFullName . '.txt', '');
  * Now, the cronjob script will run the deploy.php script every minute to deploy
  * any repo found in the to_deploy folder.
  */
+
+echo "Repo added to queue."
