@@ -10,6 +10,6 @@ $logFolderName= 'logs';
 $logBaseFileName = 'deploy';
 $defaultRepoSettings = [
     'path' => '',
-    'command' => 'lss'
+    'command' => 'git pull --force'
 ];
 
