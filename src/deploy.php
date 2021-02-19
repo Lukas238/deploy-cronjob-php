@@ -1,7 +1,11 @@
 <?php
+chdir(__DIR__); // To make sure the crontab will run this script in the correct folder
+
 include 'functions.php';
 
 $toDeployFolder = __DIR__ . '/' . $toDeployFolderName;
+
+
 
 // Get list of replo deploy files
 
@@ -18,7 +22,7 @@ $toDeployList = array_map(function ($val) {
 
 
 // Get configuration JSON
-$config_json = @file_get_contents($reposConfigFileName) or die('Missing configuration file.');
+$config_json = @file_get_contents(__DIR__ ."/". $reposConfigFileName) or die('Missing configuration file.');
 $projectsJSON = json_decode($config_json);
 
 if(!$projectsJSON){
@@ -56,5 +60,3 @@ foreach ($toDeployList as $toDeployItem) {
 
     repoUpdate($toDeployItem, $repoSettings);
 }
-
-
