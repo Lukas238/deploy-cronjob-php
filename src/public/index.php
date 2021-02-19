@@ -41,4 +41,4 @@ file_put_contents($toDeployFolder . '/' . $repoFullName . '.txt', '');
  * any repo found in the to_deploy folder.
  */
 
-echo "Repo added to queue."
+echo "Repo added to queue.";

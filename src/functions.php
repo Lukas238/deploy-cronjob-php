@@ -77,5 +77,5 @@ function repoUpdate($toDeployItem, $repoSettings)
 
     saveToLog($toDeployItem, $repoSettings, $output, $retval);
 
-    echo "Repo deployed."
+    echo "Repo deployed.";
 }
