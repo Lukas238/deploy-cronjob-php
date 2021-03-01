@@ -26,6 +26,12 @@ $body = json_decode($body_raw); // Get webhook data
 //Generate the repo rull name
 $repoFullName = $body->repository->project->key . '_' . $body->repository->name;
 
+//Get repo updated branch name
+$repoBranchName = trim(strtolower($body->repository->changes->ref->displayId));
+if( !in_array($repoBranchName,['main', 'master'])){
+    die('Only "main" or "master" branchs can be deployed.');
+}
+
 // if $savePath folder do not exist, create it
 if (!is_dir($toDeployFolder)) {
     mkdir($toDeployFolder);
