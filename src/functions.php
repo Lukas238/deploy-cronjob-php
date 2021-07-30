@@ -58,7 +58,7 @@ function isValidHMAC($headers, $body_raw, $secret)
 /**
  * repoUpdate()
  *
- * This function will run a git pull (or other custom commnad) on the repo path.
+ * This function will run a git pull (or other custom command) on the repo path.
  *
  */
 function repoUpdate($toDeployItem, $repoSettings)
