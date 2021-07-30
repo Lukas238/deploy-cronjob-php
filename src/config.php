@@ -10,6 +10,5 @@ $logFolderName= 'logs';
 $logBaseFileName = 'deploy';
 $defaultRepoSettings = [
     'path' => '',
-    'command' => 'git pull --force'
+    'command' => 'git fetch --depth 1 && git reset --hard @{upstream}'
 ];
-
