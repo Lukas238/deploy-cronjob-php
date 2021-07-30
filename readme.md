@@ -253,9 +253,9 @@ And while this is not an issue for a static site, you may want to change the git
 
 ## Activity Log
 
-The deploy tool will log all update activities in the configured log folder.
-Only the last 31 days logs are kept.
-Each new day, if the log for the current day number already exist, it is deleted and recreated.
+- The deploy tool will log all update activities in daily log files with the name `deploy_[day number].log`, in the configured log folder.
+- Only the last 31 days logs are kept.
+- If the log file for the current day number already exist, it is deleted and recreated.
 
 ### Log format
 
