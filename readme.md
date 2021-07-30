@@ -250,3 +250,26 @@ git fetch --depth 1 && git reset --hard @{upstream}
 
 **Keep in mind that this will destroy any local or temp files not part of the repository.**
 And while this is not an issue for a static site, you may want to change the git command to match your needs.
+
+## Activity Loggin
+
+The deploy tool will log all update activities in the configured log folder.
+Only the last 31 days logs are kept.
+Each new day, if the log for the current day number already exist, it is deleted and recreated.
+
+### Log format
+
+The logs files will include a single line for each deploy executed, including the following information:
+- Date and time
+- Project Name
+- Repo Name
+- The repository full path in the server
+- The command executed
+- The command result number
+- The command output
+
+**Example:**
+```txt
+2021-07-28 11:32:03am - PROJECTNAME_repo-test1 - /var/www/repo-test1 - git fetch --depth 1 && git reset --hard @{upstream} - 0
+        HEAD is now at 56d5b9e Fixed typo in the site
+```
