@@ -251,7 +251,7 @@ git fetch --depth 1 && git reset --hard @{upstream}
 **Keep in mind that this will destroy any local or temp files not part of the repository.**
 And while this is not an issue for a static site, you may want to change the git command to match your needs.
 
-## Activity Loggin
+## Activity Log
 
 The deploy tool will log all update activities in the configured log folder.
 Only the last 31 days logs are kept.
