@@ -189,6 +189,7 @@ Adding the public ssh key to a project will grant access to all repositories und
 3. Click `Access keys` and then `Add key`.
 4. Choose the **Read** permission for the git operations, as you want to be sure that the remote system will not be able to write back to the Bitbucket repository.
 5. Paste the key into the text box and click `Add key`.
+
     ![](https://confluence.atlassian.com/bitbucketserver/files/776639781/776639783/1/1395624592894/Stash212_add-key.png)
 
 ### Bitbucket Webhook Config
